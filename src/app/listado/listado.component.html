@@ -1,0 +1,53 @@
+<div class="titulo-container m-3">
+    <h1 class="text-center fw-bold titulo-recor">Recordatorios</h1>
+    <button class="btn btn-success btn-new fw-bold" (click)="abrirModal()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Nuevo Recordatorio"><i class="bi bi-plus-circle"></i></button>
+</div>
+<div class="">
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <div *ngFor="let recor of listado;index as indice" class="card text-center col-md-5 col-lg-3 col-8">
+            <div class="card-header fw-bold">
+                {{recor.nombreActividad}}
+            </div>
+            <div class="card-body">
+              <p class="card-text"><b>Responsable: </b>{{recor.responsable}}</p>
+              <p class="card-text"><b>Descripcion: </b>{{recor.descripcion}}</p>
+              <button class="btn btn-warning m-1" (click)="editar(indice)">Editar</button>
+              <button class="btn btn-danger" (click)="eliminar(recor.id)">Eliminar</button>
+            </div>
+            <div class="card-footer">
+              fecha: {{recor.fecha}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="modalVisible" class="newRecordatorio">
+    <div class="newRecord__container">
+        <h2 class="text-center">Ingresa recordatorio</h2>
+        <div *ngIf="errorCampos" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error</strong> Debes completar los campos
+            <button type="button" class="btn-close" (click)="errorCampos = false"></button>
+        </div>
+        <form action="" #formAdd="ngForm" (submit)="guardar()">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Ingrese Nombre actividad</label>
+                <input required type="text" name="nombreActividad" [(ngModel)]="recordatorio.nombreActividad" class="form-control" id="exampleFormControlInput1" placeholder="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Ingrese Responsable</label>
+                <input required type="text" name="responsable" [(ngModel)]="recordatorio.responsable" class="form-control" id="exampleFormControlInput1" placeholder="Responsable">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">ingrese descripcion</label>
+                <textarea required class="form-control" name="descripcion" [(ngModel)]="recordatorio.descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <input required type="date" name="fecha" [(ngModel)]="recordatorio.fecha" class="fecha">
+            </div>
+            <div class="d-flex justify-content-center gap-3">
+                <input type="submit" value="Guardar" class="btn btn-outline-success">
+                <input type="button" value="Cancelar" (click)="cerrarForm(formAdd)" class="btn btn-outline-danger">
+            </div>
+        </form>
+    </div>
+</div>

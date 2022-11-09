@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+.ing-recor {
+    border-left: 1px solid rgb(119, 118, 118);
+    padding-left: 50px;
+}
+
+.titulo-container {
+    display: flex;
+    justify-content: center;
+    /*grid-template-areas: 'nada titulo titulo titulo titulo titulo boton';*/
+}
+
+.btn-new {
+    position: absolute;
+    /*grid-area: boton;*/
+    right: 20px;
+    width: 70px;
+}
+
+.titulo-recor {
+    grid-area: titulo;
+}
+
+.newRecordatorio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.466);
+    display: flex;
+}
+
+.newRecord__container {
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.fecha {
+    width: 100%;
+    padding: 5px;
+}
